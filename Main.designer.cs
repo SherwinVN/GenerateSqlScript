@@ -1,6 +1,6 @@
 ﻿namespace GenerateSqlScript
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.txt_table = new System.Windows.Forms.TextBox();
             this.txt_where = new System.Windows.Forms.TextBox();
             this.but_generateSqlSript_table = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.lst_store = new System.Windows.Forms.ListBox();
             this.cbtypep = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.but_create_tab_tmp_x = new System.Windows.Forms.Button();
             this.cbx_action = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.but_refreshview = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@
             this.dgr_result = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.but_execute = new System.Windows.Forms.Button();
-            this.but_create_tab_tmp_x = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -329,6 +329,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create SQL Script Insert";
             // 
+            // but_create_tab_tmp_x
+            // 
+            this.but_create_tab_tmp_x.Location = new System.Drawing.Point(259, 69);
+            this.but_create_tab_tmp_x.Name = "but_create_tab_tmp_x";
+            this.but_create_tab_tmp_x.Size = new System.Drawing.Size(103, 20);
+            this.but_create_tab_tmp_x.TabIndex = 11;
+            this.but_create_tab_tmp_x.Text = "CRTable/tmp/x";
+            this.but_create_tab_tmp_x.UseVisualStyleBackColor = true;
+            this.but_create_tab_tmp_x.Click += new System.EventHandler(this.but_create_tab_tmp_x_Click);
+            // 
             // cbx_action
             // 
             this.cbx_action.FormattingEnabled = true;
@@ -452,9 +462,9 @@
             // 
             // rtb_results2
             // 
+            this.rtb_results2.AutoWordSelection = true;
             this.rtb_results2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_results2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtb_results2.HideSelection = false;
             this.rtb_results2.Location = new System.Drawing.Point(3, 16);
             this.rtb_results2.Name = "rtb_results2";
             this.rtb_results2.Size = new System.Drawing.Size(886, 64);
@@ -507,17 +517,7 @@
             this.but_execute.UseVisualStyleBackColor = true;
             this.but_execute.Click += new System.EventHandler(this.but_execute_Click);
             // 
-            // but_create_tab_tmp_x
-            // 
-            this.but_create_tab_tmp_x.Location = new System.Drawing.Point(259, 69);
-            this.but_create_tab_tmp_x.Name = "but_create_tab_tmp_x";
-            this.but_create_tab_tmp_x.Size = new System.Drawing.Size(103, 20);
-            this.but_create_tab_tmp_x.TabIndex = 11;
-            this.but_create_tab_tmp_x.Text = "CRTable/tmp/x";
-            this.but_create_tab_tmp_x.UseVisualStyleBackColor = true;
-            this.but_create_tab_tmp_x.Click += new System.EventHandler(this.but_create_tab_tmp_x_Click);
-            // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -532,7 +532,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(630, 602);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GenerateSqlScript";
             this.groupBox1.ResumeLayout(false);

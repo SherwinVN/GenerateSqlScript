@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace GenerateSqlScript
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         #region Declare 
         SqlConnection connection;
@@ -21,7 +21,7 @@ namespace GenerateSqlScript
         string sql = "";
 
         #endregion
-        public Form1()
+        public Main()
         {
             InitializeComponent();
             txt_table.CharacterCasing = CharacterCasing.Upper;
@@ -549,7 +549,14 @@ namespace GenerateSqlScript
                     }
                     else
                     {
-                        MessageBox.Show(ExecuteSQL_Re(rtb_results.Text).ToString() + " record(s) effected", "Thực hiện xong!");
+                        string[] str = rtb_results2.Text.Split(new string[] { "GO","go","Go","gO"}, StringSplitOptions.None);
+                        int i = 0;
+                        foreach (string str_ in str)
+                        {
+
+                            i += ExecuteSQL_Re(str_);
+                        }
+                        MessageBox.Show(i.ToString()+" record(s) effected", "Thực hiện xong!");
 
                     }
                 }
