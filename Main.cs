@@ -224,7 +224,7 @@ namespace GenerateSqlScript
                 sb.Append("\n----------------------------------\n");
                 if (cbtypep.Text == "CREATE")
                 {
-                    sb.Append("IF(EXiSTS(SELECT name FROM sysobjects WHERE name ='" + storeProduce + "'))  DROP PROCEDURE " + storeProduce );
+                    sb.Append("IF(EXiSTS(SELECT name FROM sysobjects WHERE name ='" + storeProduce + "'))  DROP PROCEDURE " + storeProduce);
 
                 }
                 sb.Append("\nGO\n");
@@ -272,7 +272,7 @@ namespace GenerateSqlScript
                 sb.Append("\n----------------------------------\n");
                 if (cbtypep.Text == "CREATE")
                 {
-                    sb.Append("--IF(EXiSTS(SELECT name FROM sysobjects WHERE name ='" + TableName + "'))  DROP TABLE " + TableName+"\n");
+                    sb.Append("--IF(EXiSTS(SELECT name FROM sysobjects WHERE name ='" + TableName + "'))  DROP TABLE " + TableName + "\n");
                 }
                 sb.Append(cbtypep.Text + " TABLE [" + TableName + "] (\n");
 
@@ -336,7 +336,7 @@ namespace GenerateSqlScript
                 sb.Append(" \nGO\n");
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
-                    if(dataRow["text"].ToString().StartsWith("CREATE"))
+                    if (dataRow["text"].ToString().StartsWith("CREATE"))
                         sb.Append(dataRow["text"].ToString().Replace("CREATE", cbtypep.Text));
                     else
                         sb.Append(dataRow["text"].ToString());
@@ -526,39 +526,20 @@ namespace GenerateSqlScript
 
                 if (!(rtb_results2.Text == ""))
                 {
-                    if (rtb_results2.Text.ToLower().StartsWith("select"))
+                    int i = 0;
+                    StringBuilder strb = new StringBuilder();
+                    foreach (string str_ in rtb_results2.Lines)
                     {
-                        DataTable dataTable = new DataTable();
-                        SqlDataAdapter da = new SqlDataAdapter(rtb_results2.Text, connection);
-                        da.MissingSchemaAction = MissingSchemaAction.AddWithKey;
-
-                        da.Fill(dataTable);
-                        da.UpdateCommand = new SqlCommandBuilder(da).GetUpdateCommand();
-
-                        dataTable.RowChanged += delegate
+                        if (str_.Contains("GO") || str_.Contains("go") || str_.Contains("Go") || str_.Contains("gO"))
                         {
-                            da.Update(dataTable);
-                        };
-                        dataTable.RowDeleted += delegate
-                        {
-                            da.Update(dataTable);
-                        };
-
-
-                        dgr_result.DataSource = dataTable;
-                    }
-                    else
-                    {
-                        string[] str = rtb_results2.Text.Split(new string[] { "GO","go","Go","gO"}, StringSplitOptions.None);
-                        int i = 0;
-                        foreach (string str_ in str)
-                        {
-
-                            i += ExecuteSQL_Re(str_);
+                            continue;
                         }
-                        MessageBox.Show(i.ToString()+" record(s) effected", "Thực hiện xong!");
-
+                        strb.Append(str_ + " ");
                     }
+                    i += ExecuteSQL_Re(strb.ToString());
+                    MessageBox.Show(i.ToString() + " record(s) effected", "Thực hiện xong!");
+
+
                 }
 
             }
@@ -647,14 +628,55 @@ namespace GenerateSqlScript
 
         private void rtb_results2_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control)
-                switch (e.KeyCode)
-                {
-                    case Keys.R:
-                        but_execute_Click(null, null);
-                        break;
-                }
+            switch (e.KeyCode)
+            {
+                case Keys.F5:
+
+
+                    int i = 0;
+                    try
+                    {
+                        if (rtb_results2.SelectedText.Length > 0)
+                            i = ExecuteSQL_Re(rtb_results2.SelectedText);
+                        else
+                            i = ExecuteSQL_Re(rtb_results2.Text);
+                        MessageBox.Show(i.ToString() + " record(s) effected", "Thực hiện xong!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ai rồi cũng có lỗi! nên xin lượng thứ nếu chương trình bị lỗi,\nNếu được, bạn hãy xem bạn cho tôi những gì?\nLỗi từ những cái bạn cho tôi đấy.\n===========================\nLỗi:" + ex.Message, "Không có gì thông báo khi bạn tắt thông báo này!");
+                    }
+                    break;
+                case Keys.R:
+                    if (e.Control)
+                    {
+                        DataTable dataTable = new DataTable();
+                        SqlDataAdapter da ;
+                        if (rtb_results2.SelectedText.Length > 0)
+                            da = new SqlDataAdapter(rtb_results2.SelectedText, connection);
+                        else
+                            da = new SqlDataAdapter(rtb_results2.Text, connection);
+                        da.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+
+                        da.Fill(dataTable);
+                        da.UpdateCommand = new SqlCommandBuilder(da).GetUpdateCommand();
+
+                        dataTable.RowChanged += delegate
+                        {
+                            da.Update(dataTable);
+                        };
+                        dataTable.RowDeleted += delegate
+                        {
+                            da.Update(dataTable);
+                        };
+
+
+                        dgr_result.DataSource = dataTable;
+                    }
+                    break;
+            }
         }
+
 
         private void dgr_result_KeyDown(object sender, KeyEventArgs e)
         {

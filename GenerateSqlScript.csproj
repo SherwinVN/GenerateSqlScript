@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8-pig-48.ico" />
+    <Content Include="Retore DB.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

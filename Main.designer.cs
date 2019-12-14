@@ -69,6 +69,13 @@
             this.dgr_result = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.but_execute = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txt_dbname = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txt_duongdan = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,6 +86,8 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgr_result)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_table
@@ -403,10 +412,12 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tab1);
             this.tabControl1.Controls.Add(this.tab2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(15, 171);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -517,6 +528,78 @@
             this.but_execute.UseVisualStyleBackColor = true;
             this.but_execute.Click += new System.EventHandler(this.but_execute_Click);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox7);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(898, 354);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Bakup & Restore";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Controls.Add(this.txt_duongdan);
+            this.groupBox7.Controls.Add(this.txt_dbname);
+            this.groupBox7.Controls.Add(this.button1);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.Location = new System.Drawing.Point(3, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(892, 348);
+            this.groupBox7.TabIndex = 15;
+            this.groupBox7.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(9, 76);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(84, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "ExcuteSQL";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txt_dbname
+            // 
+            this.txt_dbname.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txt_dbname.Location = new System.Drawing.Point(92, 39);
+            this.txt_dbname.Name = "txt_dbname";
+            this.txt_dbname.Size = new System.Drawing.Size(228, 20);
+            this.txt_dbname.TabIndex = 11;
+            this.txt_dbname.Text = "TTV_";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Location = new System.Drawing.Point(4, 46);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Database name";
+            // 
+            // txt_duongdan
+            // 
+            this.txt_duongdan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txt_duongdan.Location = new System.Drawing.Point(92, 13);
+            this.txt_duongdan.Name = "txt_duongdan";
+            this.txt_duongdan.Size = new System.Drawing.Size(228, 20);
+            this.txt_duongdan.TabIndex = 11;
+            this.txt_duongdan.Text = "TTV_";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Location = new System.Drawing.Point(4, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(60, 13);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Đường dẫn";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +631,9 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgr_result)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -594,6 +680,13 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ListBox lst_store;
         private System.Windows.Forms.Button but_create_tab_tmp_x;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_dbname;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txt_duongdan;
     }
 }
 
