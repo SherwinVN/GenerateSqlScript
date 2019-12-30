@@ -247,7 +247,7 @@ namespace GenerateSqlScript
             #region Dựng cột
             sql = String.Concat(new string[] {
                                 " select * from (",
-                                " select '  ['+column_name+'] ' + data_type + coalesce('('+cast(character_maximum_length as varchar)+')','') + ' ' +",
+                                " select '  ['+column_name+'] ' + data_type + coalesce('('+cast(character_maximum_length as varchar)+')','')+ case when data_type = 'int' or data_type = 'tinyint' then '' else coalesce('('+cast(numeric_precision as varchar)+','+cast(numeric_scale as varchar)+')','') end +' ' +",
                                 " case when exists ( ",
                                 " select id from syscolumns",
                                 " where object_name(id)= '"+TableName+"'",
